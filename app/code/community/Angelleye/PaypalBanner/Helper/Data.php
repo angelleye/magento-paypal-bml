@@ -76,9 +76,8 @@ class Angelleye_PaypalBanner_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $price = (string)(Mage::helper('checkout/cart')->getQuote()->getGrandTotal()>0 ?
             Mage::app()->getStore()->formatPrice(
-                Mage::helper('checkout/cart')->getQuote()->getGrandTotal(), false) : '');
-
-         if ($price[0] == '$'){
+                Mage::helper('checkout/cart')->getQuote()->getGrandTotal(), false) : '0.00');
+         if ($price && $price[0] == '$'){
              $price = substr($price, 1);
          }
          return $price;
